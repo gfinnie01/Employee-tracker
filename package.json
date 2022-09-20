@@ -1,0 +1,23 @@
+{
+  "name": "employee-tracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gfinnie01/Employee-tracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gfinnie01/Employee-tracker/issues"
+  },
+  "homepage": "https://github.com/gfinnie01/Employee-tracker#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4"
+  }
+}
