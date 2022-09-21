@@ -8,24 +8,24 @@ CREATE TABLE business (
   business_name VARCHAR(30) NOT NULL,
 
   PRIMARY KEY (id),
-UNIQE KEY (business_name)
+  UNIQUE KEY (business_name)
 );
 
 CREATE TABLE role (
   id INT NOT NULL AUTO_INCREMENT,
   title VARCHAR(30) NOT NULL,
   salary DECIMAL NOT NULL,
-  business_id INT NOT NULL
+  business_id INT NOT NULL,
 
-  PRIMARY KEY (id)
+  PRIMARY KEY (id),
   FOREIGN KEY (business_id)
-    REFERENCES business_id
+    REFERENCES business(id)
 );
 
 CREATE TABLE Employees (
   id INT NOT NULL AUTO_INCREMENT,
   employee_first_name VARCHAR(30) NOT NULL,
-  employee_last_name VARCHAR(30) TEXT NOT NULL,
+  employee_last_name VARCHAR(30) NOT NULL,
   role_id INT NOT NULL,
   manager_id INT REFERENCES Employees(id),
 
