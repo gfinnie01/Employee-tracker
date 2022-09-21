@@ -1,3 +1,11 @@
+
+INSERT INTO business (business_name)
+VALUES 
+    ("Sales"),
+    ("Engineer"),
+    ("Finance"),
+    ("leagal");
+    
 INSERT INTO role (title, salary, business_id)
 VALUES
 ("Sales Person", 11000, 1),
@@ -9,16 +17,9 @@ VALUES
 ("legal Team Lead", 13000, 4),
 ("Lawyer", 13000, 4);
 
-INSERT INTO business (business_name)
+INSERT INTO Employees (employee_first_name, employee_last_name, role_id, manager_id)
 VALUES 
-    ("Sales"),
-    ("Engineer"),
-    ("Finance"),
-    ("leagal");
-
-INSERT INTO Employees (employee_first_name, employee_last_name, role_id,manager_id)
-VALUES 
-    ("Aaminah","Terry", 1, NULL)
+    ("Aaminah" ,"Terry", 1, NULL),
     ("Miller","Cullen", 2, 1),
     ("Haleemah","O'Moore", 3, NULL),
     ("Jayda","Cunningham", 4, 2),
