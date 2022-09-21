@@ -2,7 +2,7 @@ const inquirer = require("inquirer");
 const { default: Choices } = require("inquirer/lib/objects/choices");
 const sql = require("./db/connect");
 const helper = require("./lib/helper")
-
+const cTable = require("console.table");
 
 const newBusiness = async () => {
 const business = await inquirer.prompt([
@@ -48,7 +48,7 @@ const newEployee = async () => {
     chooseRequest();
 }
  const newRole = async ()=> {
-    const choicesAdd = await helper.debtChoices();
+    const choicesAdd = await helper.businessChoices();
     const role = await inquirer.prompt([
         {
             type: 'input',
@@ -70,3 +70,95 @@ const newEployee = async () => {
     await sql.addRole(role);
     chooseRequest();
  }
+
+ const viewBusiness = () => {
+    sql.getBusiness()
+  
+    .then(([rows]) => {
+      console.log('\n');
+      console.log(cTable.getTable(rows));
+    })
+  
+    .then(()=> {
+        chooseRequest();
+    }) 
+  }
+
+  const viewRoles = () => {
+    sql.getRoles()
+  
+    .then(([rows]) => {
+      console.log('\n');
+      console.log(cTable.getTable(rows));
+    })
+  
+    .then(()=> {
+        chooseRequest();
+    }) 
+  }
+
+  const viewEmployees = () => {
+    sql.getEmployees()
+  
+    .then(([rows]) => {
+      console.log('\n');
+      console.log(cTable.getTable(rows));
+    })
+  
+    .then(()=> {
+        chooseRequest();
+    }) 
+  }
+  
+
+ const chooseRequest = () => {
+    inquirer.prompt([
+        {
+          type: 'list',
+          name: 'request',
+          message: 'What would you like to do?',
+          choices: ['Add a Department', 
+                    'Add an Employee', 
+                    'Add a Role',
+                    'Update Employees Role',
+                    'View All Departments', 
+                    'View All Employees', 
+                    'View All Roles', 
+                   ],
+          loop: false,
+        },
+    ])
+  
+    .then((data) => {
+        const {request} = data;
+        console.log(request);
+      switch (request) {
+          case 'Add a Department':
+            newBusiness();
+            break;
+          case 'Add a Role':
+            newRole();
+            break;
+          case 'Add an Employee':
+            newEployee();
+            break;
+          case 'Update Employees Role':
+            updateEmployeesRole();
+            break;
+          case 'View All Departments':
+            viewBusiness();
+            break;
+          case 'View All Employees':
+            viewEmployees();
+            break;
+          case 'View All Roles':
+            viewRoles();
+            break;         
+      
+          default:
+              break;
+      }
+    })
+  }
+  
+  chooseRequest();

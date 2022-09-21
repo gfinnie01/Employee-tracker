@@ -4,7 +4,7 @@ class GNTQuery {
 constroctor(db){
     this.db =db;
 }
-addDept(data) {
+addBusiness(data) {
     const values = [data.name];
     return this.db
     .promise()
