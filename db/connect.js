@@ -3,8 +3,8 @@ require('dotenv').config();
 const db = mysql.createConnection({
     host:'localhost',
     user: 'root' ,
-    password: "",
-    database: ""
+    password: '',
+    database: 'business_db',
 });
 
 module.exports = db;
