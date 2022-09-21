@@ -18,7 +18,7 @@ addRole(data) {
     return this.db
     .promise()
     .query(
-        INSERT INTO role (title, salary, business_id) VALUES(?,?,?),
+        INSERT INTO role (title, salary, business_id) VALUES(?,?,?) ,
         values
     );
 }
@@ -30,5 +30,14 @@ addEmployee(data) {
         INSERT INTO Employee (employee_first_name, employee_last_name, role_id, manager_id)
         VALUES(?,?,?,?)
     )
+}
+updateEmployeesRoleById(data) {
+    const values = [data.role_id, data.Employee_id];
+    return this.db
+    .promise()
+    .query(
+        UPDATE employee SET manager_id = ? WHERE id = ?, 
+        values
+    );
 }
 }
